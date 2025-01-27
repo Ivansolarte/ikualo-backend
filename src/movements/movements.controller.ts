@@ -9,18 +9,22 @@ import {
   Delete,
   Query,
   Put,
+  UseGuards,
 } from "@nestjs/common";
 import { MovementsService } from "./movements.service";
 import { MovementDto } from "./dto/movement.dto";
 import { MovementIf } from "./interfaces/movement.interface";
+import { AuthTokenGuard } from "src/guards/auth-token/auth-token.guard";
 
 @Controller("/movements")
+@UseGuards(AuthTokenGuard)
 export class MovementsController {
   constructor(private movementsService: MovementsService) {}
   ///
   @Get()
+  
   getAllMovements(@Query('userId') userId: any) {
-    console.log(userId);
+    // console.log(userId);
     if (userId) {
       return this.movementsService.getMovementsById(userId);            
     } else {

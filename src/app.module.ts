@@ -6,6 +6,9 @@ import { MovementsModule } from './movements/movements.module';
 import { HomeModule } from './home/home.module';
 import { MongooseModule } from "@nestjs/mongoose";
 import { LoginModule } from './login/login.module';
+import { ChatModule } from './chat/chat.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
 
 @Module({
   imports: [
@@ -13,7 +16,11 @@ import { LoginModule } from './login/login.module';
     MovementsModule, 
     HomeModule,
     MongooseModule.forRoot('mongodb://localhost/bancoMoney'),
-    LoginModule
+    LoginModule,
+    ChatModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
   ]
 })
 export class AppModule {}

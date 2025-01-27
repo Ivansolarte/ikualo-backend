@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable prettier/prettier */
-export const encryptData = (usuario) => {
+export const EncryptData = (usuario) => {
   const currentDateObj = new Date();
   const numberOfMlSeconds = currentDateObj.getTime();
   const addMlSeconds = 60 * 60000;
@@ -15,7 +15,7 @@ export const encryptData = (usuario) => {
   return encrypted;
 };
 
-export const decryptData = (encrypted) => {
+export const DecryptData = (encrypted) => {
   const shift = 3;
   let decrypted = "";
   for (let i = 0; i < encrypted.length; i++) {
